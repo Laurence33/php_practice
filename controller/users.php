@@ -1,5 +1,5 @@
 <?php
-$users = $database->selectAll('user', 'User');
+$users = App::get('database')->selectAll('user', 'User');
 
 
 require './views/users.view.php';

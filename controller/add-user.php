@@ -2,6 +2,6 @@
 $name = $_POST['name'] ?? null;
 
 if ($name) {
-    $database->insert('user', (array)$_POST);
+    App::get('database')->insert('user', (array)$_POST);
     header('location: /users');
 }
