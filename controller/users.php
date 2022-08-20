@@ -1,5 +1,4 @@
 <?php
-require 'classes/User.php';
 $users = $database->selectAll('user', 'User');
 
 

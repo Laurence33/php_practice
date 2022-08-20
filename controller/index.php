@@ -1,6 +1,5 @@
 <?php
 
-require 'classes/Task.php';
 
 $tasks = $database->selectAll('task', 'Task');
 
