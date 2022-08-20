@@ -3,6 +3,8 @@
 
 $router->get('', 'controller/index.php');
 $router->get('about',  'controller/about.php');
+$router->get('users',  'controller/users.php');
+$router->post('users',  'controller/add-user.php');
 $router->get('about/culture', 'controller/about-culture.php');
 $router->get('contact', 'controller/contact.php');
 $router->get('404',  'views/404-page.view.php');

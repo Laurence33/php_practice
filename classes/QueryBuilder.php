@@ -17,4 +17,14 @@ class QueryBuilder
 
         return $statement->fetchAll(PDO::FETCH_CLASS, $intoClass);
     }
+
+    public function addUser(User $user)
+    {
+        $statement = $this->pdo->prepare("INSERT INTO user values(NULL, :name)");
+        $statement->bindParam(':name', $user->name);
+        if ($statement->execute()) {
+            return $this->pdo->lastInsertId();
+        }
+        return 0;
+    }
 }
