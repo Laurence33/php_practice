@@ -4,4 +4,6 @@ require 'classes/Connection.php';
 require 'classes/QueryBuilder.php';
 
 
-return new QueryBuilder(Connection::make());
+$config = require './config.php';
+
+return new QueryBuilder(Connection::make($config['database']));
