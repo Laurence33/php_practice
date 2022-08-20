@@ -5,4 +5,4 @@ require './core/bootstrap.php';
 // dd($_SERVER);
 
 
-require Router::load('routes.php')->direct(Request::uri());
+require Router::load('routes.php')->direct(Request::uri(), Request::method());

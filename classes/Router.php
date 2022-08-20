@@ -2,28 +2,34 @@
 
 class Router
 {
-    protected $routes = [];
+    protected $routes = [
+        'GET' => [],
+        'POST' => []
+    ];
+
+    public function get($uri, $controller)
+    {
+        $this->routes['GET'][$uri] = $controller;
+    }
+
+    public function post($uri, $controller)
+    {
+        $this->routes['POST'][$uri] = $controller;
+    }
 
     public static function load($routes)
     {
         $router = new static;
         require $routes;
-        $router->define($routes);
 
         return $router;
     }
-
-    public function define($routes)
+    public function direct($uri, $method)
     {
-        $this->routes = $routes;
-    }
-
-    public function direct($uri)
-    {
-        if (array_key_exists($uri, $this->routes)) {
-            return $this->routes[$uri];
+        if (array_key_exists($uri, $this->routes[$method])) {
+            return $this->routes[$method][$uri];
         }
 
-        return $this->routes['404'];
+        return $this->routes['GET']['404'];
     }
 }
