@@ -1,5 +1,4 @@
 <?php
-
 class QueryBuilder
 {
 
@@ -26,5 +25,13 @@ class QueryBuilder
             return $this->pdo->lastInsertId();
         }
         return 0;
+    }
+
+    public function users()
+    {
+        $statement = $this->pdo->prepare("SELECT * FROM user");
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 }
