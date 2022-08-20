@@ -24,6 +24,6 @@ class Router
             return $this->routes[$uri];
         }
 
-        throw new Exception('No route defined');
+        return $this->routes['404'];
     }
 }
