@@ -1,16 +1,13 @@
 <?php
+$database = require './core/bootstrap.php';
 
+require './classes/Router.php';
 
-require 'classes/Task.php';
+$router = new Router();
+// require 'routes.php';
+// $router->define($routes);
 
-// $statement = $conn->query("insert into task values(NULL, 'Go to store', false),(NULL, 'Learn PHP', true),(NULL, 'Finish my tasks', false);");
+// require $router->direct($_SERVER['REQUEST_URI']);
 
-// if ($statement) {
-//     echo 'Added tasks!';
-// }
-$query = require 'bootstrap.php';
-
-$tasks = $query->selectAll('task', 'Task');
-
-
-require('./index.view.php');
+$uri = $_SERVER['REQUEST_URI'];
+require Router::load('routes.php')->direct($uri);
